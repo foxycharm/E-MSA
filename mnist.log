@@ -1,0 +1,720 @@
+
+WARNING: The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+If you depend on functionality not listed there, please file an issue.
+
+====================================================================================================
+Run CNN on MNIST
+====================================================================================================
+Config:
+dataset_name         (mnist)
+seed                 (1)
+verbosity            (WARN)
+print_step           (100)
+lift_dimension       (1)
+num_train            (60000)
+num_test             (10000)
+num_channels         (5)
+filter_size          (3)
+padding              (same)
+num_layers           (2)
+rho                  (0.03)
+reg                  (0.001)
+activation           (tanh)
+delta                (0.5)
+batch_size           (128)
+buffer_size          (512)
+num_epochs           (1)
+sgd_lr               (0.01)
+adagrad_lr           (0.01)
+adam_lr              (0.001)
+msa_maxiter          (10)
+msa_perturb_init     (0.0)
+====================================================================================================
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_0 (Conv2D)            (None, 28, 28, 5)         50        
+_________________________________________________________________
+avg_pool_0 (AveragePooling2D (None, 14, 14, 5)         0         
+_________________________________________________________________
+conv2d_init (Conv2D)         (None, 14, 14, 5)         230       
+_________________________________________________________________
+avg_pool_1 (AveragePooling2D (None, 7, 7, 5)           0         
+_________________________________________________________________
+residualconv2d_0 (ResidualCo (None, 7, 7, 5)           230       
+_________________________________________________________________
+residualconv2d_1 (ResidualCo (None, 7, 7, 5)           230       
+_________________________________________________________________
+lower (Lower)                (None, 7, 7, 1)           0         
+_________________________________________________________________
+flatten (Flatten)            (None, 49)                0         
+_________________________________________________________________
+dense (Dense)                (None, 10)                500       
+=================================================================
+Total params: 1,240
+Trainable params: 1,240
+Non-trainable params: 0
+_________________________________________________________________
+====================================================================================================
+Trainer: MSATrainer (MSA_trainer)
+Settings: {'maxiter': 10, 'perturb_init': 0.0}
+====================================================================================================
+Epoch: init
+Train loss: 2.3245041087522345
+Test loss: 2.3243458390235903
+Step     0 of   469: 
+Train loss: 2.251601083803985
+Test loss: 2.251721012390266
+Step     5 of   469: 
+Train loss: 1.538198397321216
+Test loss: 1.5384017582667076
+Step    10 of   469: 
+Train loss: 1.1045078256372678
+Test loss: 1.105470321946225
+Step    15 of   469: 
+Train loss: 0.9116388513880261
+Test loss: 0.9115235062979036
+Step    20 of   469: 
+Train loss: 0.8169570423788943
+Test loss: 0.8171625869759058
+Step    25 of   469: 
+Train loss: 0.7602604875120066
+Test loss: 0.7607012547678866
+Step    30 of   469: 
+Train loss: 0.7229184611874112
+Test loss: 0.7237023216182903
+Step    35 of   469: 
+Train loss: 0.6881335943432177
+Test loss: 0.6881960241471307
+Step    40 of   469: 
+Train loss: 0.6703700312113358
+Test loss: 0.6701718917337515
+Step    45 of   469: 
+Train loss: 0.6550580712698274
+Test loss: 0.655356424592309
+Step    50 of   469: 
+Train loss: 0.6388610050839892
+Test loss: 0.6396449862395303
+Step    55 of   469: 
+Train loss: 0.6270352091829655
+Test loss: 0.626168093944
+Step    60 of   469: 
+Train loss: 0.6185165355771275
+Test loss: 0.6175281046810797
+Step    65 of   469: 
+Train loss: 0.6108651140988883
+Test loss: 0.6108085874278667
+Step    70 of   469: 
+Train loss: 0.6012003164170152
+Test loss: 0.5996275445667364
+Step    75 of   469: 
+Train loss: 0.5895808399733851
+Test loss: 0.5888501579983759
+Step    80 of   469: 
+Train loss: 0.5822208718223086
+Test loss: 0.5819709429801521
+Step    85 of   469: 
+Train loss: 0.57622456777904
+Test loss: 0.5751379854598287
+Step    90 of   469: 
+Train loss: 0.5683031243793035
+Test loss: 0.5689358696088953
+Step    95 of   469: 
+Train loss: 0.5656674807354555
+Test loss: 0.566170269907531
+Step   100 of   469: 
+Train loss: 0.5614590576644671
+Test loss: 0.5604840918617734
+Step   105 of   469: 
+Train loss: 0.5524259277824628
+Test loss: 0.5533440001940323
+Step   110 of   469: 
+Train loss: 0.549295807793989
+Test loss: 0.5498651670197309
+Step   115 of   469: 
+Train loss: 0.5453842188847267
+Test loss: 0.5452207978499137
+Step   120 of   469: 
+Train loss: 0.5416017548512604
+Test loss: 0.5415284158819813
+Step   125 of   469: 
+Train loss: 0.5395527194112034
+Test loss: 0.5401004906428062
+Step   130 of   469: 
+Train loss: 0.536581898139695
+Test loss: 0.5371723740787829
+Step   135 of   469: 
+Train loss: 0.5358356399051214
+Test loss: 0.5367558280290183
+Step   140 of   469: 
+Train loss: 0.53350989672087
+Test loss: 0.5341045811014661
+Step   145 of   469: 
+Train loss: 0.5312683400461229
+Test loss: 0.5307194545107373
+Step   150 of   469: 
+Train loss: 0.5293321927725259
+Test loss: 0.5296888924756292
+Step   155 of   469: 
+Train loss: 0.5258042132955486
+Test loss: 0.5259975553569147
+Step   160 of   469: 
+Train loss: 0.5205366586224508
+Test loss: 0.5212191078117339
+Step   165 of   469: 
+Train loss: 0.5179164149498535
+Test loss: 0.5191225563570604
+Step   170 of   469: 
+Train loss: 0.5170056228920564
+Test loss: 0.5177573299003859
+Step   175 of   469: 
+Train loss: 0.5123911772744131
+Test loss: 0.5131419664722378
+Step   180 of   469: 
+Train loss: 0.5122841960292751
+Test loss: 0.5117960627806388
+Step   185 of   469: 
+Train loss: 0.50749823552067
+Test loss: 0.5078324243678884
+Step   190 of   469: 
+Train loss: 0.5075498392521325
+Test loss: 0.5078902840614319
+Step   195 of   469: 
+Train loss: 0.5041583672923556
+Test loss: 0.5046973377466202
+Step   200 of   469: 
+Train loss: 0.5033667852817956
+Test loss: 0.5030495468842782
+Step   205 of   469: 
+Train loss: 0.5029358262732878
+Test loss: 0.5018799355474569
+Step   210 of   469: 
+Train loss: 0.499953619504379
+Test loss: 0.5008525562993551
+Step   215 of   469: 
+Train loss: 0.49840809404850006
+Test loss: 0.49848284686015826
+Step   220 of   469: 
+Train loss: 0.49659523974030706
+Test loss: 0.49688278669017855
+Step   225 of   469: 
+Train loss: 0.4957673425896693
+Test loss: 0.4958732517088874
+Step   230 of   469: 
+Train loss: 0.49451214807518457
+Test loss: 0.49457962204844264
+Step   235 of   469: 
+Train loss: 0.4921166934704376
+Test loss: 0.4927618523775521
+Step   240 of   469: 
+Train loss: 0.4926631066758754
+Test loss: 0.4924122989177704
+Step   245 of   469: 
+Train loss: 0.49086415515107623
+Test loss: 0.4904660663362277
+Step   250 of   469: 
+Train loss: 0.4899554462251017
+Test loss: 0.4909431474693751
+Step   255 of   469: 
+Train loss: 0.4888014793395996
+Test loss: 0.4894995843454943
+Step   260 of   469: 
+Train loss: 0.4867824760533996
+Test loss: 0.48697429668095155
+Step   265 of   469: 
+Train loss: 0.48523149753020983
+Test loss: 0.485996803489782
+Step   270 of   469: 
+Train loss: 0.48493501392461485
+Test loss: 0.485340859677832
+Step   275 of   469: 
+Train loss: 0.48269837690612016
+Test loss: 0.4830962687225665
+Step   280 of   469: 
+Train loss: 0.48278380273762395
+Test loss: 0.4830165624113406
+Step   285 of   469: 
+Train loss: 0.47917611720198294
+Test loss: 0.48061419972928904
+Step   290 of   469: 
+Train loss: 0.4789215942560616
+Test loss: 0.4798034980135449
+Step   295 of   469: 
+Train loss: 0.47815631809881176
+Test loss: 0.47815631809881176
+Step   300 of   469: 
+Train loss: 0.4785119479490539
+Test loss: 0.478602801591663
+Step   305 of   469: 
+Train loss: 0.47610038215831174
+Test loss: 0.47677513275106076
+Step   310 of   469: 
+Train loss: 0.475517964716685
+Test loss: 0.47593226776284686
+Step   315 of   469: 
+Train loss: 0.4739085259073872
+Test loss: 0.474296631701922
+Step   320 of   469: 
+Train loss: 0.47122089337494416
+Test loss: 0.4714904500771377
+Step   325 of   469: 
+Train loss: 0.47025581386129733
+Test loss: 0.47092799463514556
+Step   330 of   469: 
+Train loss: 0.46943571001796397
+Test loss: 0.4699709097207603
+Step   335 of   469: 
+Train loss: 0.46925336046744204
+Test loss: 0.4693315130169109
+Step   340 of   469: 
+Train loss: 0.4684502017700066
+Test loss: 0.4687381235219665
+Step   345 of   469: 
+Train loss: 0.46619904091802694
+Test loss: 0.46709389959351494
+Step   350 of   469: 
+Train loss: 0.4669332271915371
+Test loss: 0.46598587475590786
+Step   355 of   469: 
+Train loss: 0.4662953832391965
+Test loss: 0.46567575052633126
+Step   360 of   469: 
+Train loss: 0.46498251112840944
+Test loss: 0.4652663575390638
+Step   365 of   469: 
+Train loss: 0.4652283600831436
+Test loss: 0.4641418451980009
+Step   370 of   469: 
+Train loss: 0.46274267591662327
+Test loss: 0.4622818289671914
+Step   375 of   469: 
+Train loss: 0.46155323012400484
+Test loss: 0.46165141968403833
+Step   380 of   469: 
+Train loss: 0.46112854551460786
+Test loss: 0.4606031853768785
+Step   385 of   469: 
+Train loss: 0.4595914260815766
+Test loss: 0.4602083389536809
+Step   390 of   469: 
+Train loss: 0.4593777335801367
+Test loss: 0.4600374501640514
+Step   395 of   469: 
+Train loss: 0.4602017832004418
+Test loss: 0.4594078437756684
+Step   400 of   469: 
+Train loss: 0.45780804121898394
+Test loss: 0.45871366459434315
+Step   405 of   469: 
+Train loss: 0.4587490232819218
+Test loss: 0.45935172473980207
+Step   410 of   469: 
+Train loss: 0.45828415099847114
+Test loss: 0.45837040321301603
+Step   415 of   469: 
+Train loss: 0.456847216113139
+Test loss: 0.4569267792216802
+Step   420 of   469: 
+Train loss: 0.45699987143783244
+Test loss: 0.45767841500751044
+Step   425 of   469: 
+Train loss: 0.4565364892705012
+Test loss: 0.45726083320076183
+Step   430 of   469: 
+Train loss: 0.45677901400347887
+Test loss: 0.45778694622597454
+Step   435 of   469: 
+Train loss: 0.45601762603905244
+Test loss: 0.45676275658405435
+Step   440 of   469: 
+Train loss: 0.4568202649637804
+Test loss: 0.4563003331422806
+Step   445 of   469: 
+Train loss: 0.45637368448710036
+Test loss: 0.4567328658649477
+Step   450 of   469: 
+Train loss: 0.4552969255689847
+Test loss: 0.4554555650989888
+Step   455 of   469: 
+Train loss: 0.4527509270583169
+Test loss: 0.4534348673739676
+Step   460 of   469: 
+Train loss: 0.451768976399454
+Test loss: 0.45282557101572973
+Step   465 of   469: 
+Train loss: 0.45181818634776744
+Test loss: 0.4525002675541377
+Epoch: 0
+Train loss: 0.45064935138670065
+Test loss: 0.4378460422158241
+====================================================================================================
+Trainer: BPTrainer (SGD_trainer)
+Settings: {'method': 'GradientDescentOptimizer', 'args': {'learning_rate': 0.01}}
+====================================================================================================
+Epoch: init
+Train loss: 2.3143587758985618
+Test loss: 2.314602828025818
+Step     0 of   469: 
+Train loss: 2.313755956746764
+Test loss: 2.31391594773632
+Step     5 of   469: 
+Train loss: 2.311933262873504
+Test loss: 2.3120124218827587
+Step    10 of   469: 
+Train loss: 2.3102579258256037
+Test loss: 2.3104115179029563
+Step    15 of   469: 
+Train loss: 2.3080580719446733
+Test loss: 2.3081699771396185
+Step    20 of   469: 
+Train loss: 2.306690579753811
+Test loss: 2.3068675792823403
+Step    25 of   469: 
+Train loss: 2.3052960755461354
+Test loss: 2.305397690352747
+Step    30 of   469: 
+Train loss: 2.3036481364298673
+Test loss: 2.303734991510036
+Step    35 of   469: 
+Train loss: 2.302221350750681
+Test loss: 2.3023872011798923
+Step    40 of   469: 
+Train loss: 2.3011280197208213
+Test loss: 2.3012316812903193
+Step    45 of   469: 
+Train loss: 2.300315531633668
+Test loss: 2.3004771268973916
+Step    50 of   469: 
+Train loss: 2.299068784309646
+Test loss: 2.2991938813258024
+Step    55 of   469: 
+Train loss: 2.2979861942388244
+Test loss: 2.298112303523694
+Step    60 of   469: 
+Train loss: 2.296471605866642
+Test loss: 2.296649520680056
+Step    65 of   469: 
+Train loss: 2.2954655481597124
+Test loss: 2.295597642155017
+Step    70 of   469: 
+Train loss: 2.294330291828867
+Test loss: 2.294506945852506
+Step    75 of   469: 
+Train loss: 2.293169146877224
+Test loss: 2.293405191373017
+Step    80 of   469: 
+Train loss: 2.2922173091920754
+Test loss: 2.2924105292659696
+Step    85 of   469: 
+Train loss: 2.2910110324116078
+Test loss: 2.291183904065924
+Step    90 of   469: 
+Train loss: 2.2899290262642555
+Test loss: 2.2901546470189498
+Step    95 of   469: 
+Train loss: 2.2886731685218162
+Test loss: 2.2888800229056407
+Step   100 of   469: 
+Train loss: 2.2875979835704223
+Test loss: 2.287806781671815
+Step   105 of   469: 
+Train loss: 2.2864041085970603
+Test loss: 2.286589709378905
+Step   110 of   469: 
+Train loss: 2.284984170380285
+Test loss: 2.2852716890432068
+Step   115 of   469: 
+Train loss: 2.2835264933311334
+Test loss: 2.283830276990341
+Step   120 of   469: 
+Train loss: 2.282597859027022
+Test loss: 2.282597859027022
+Step   125 of   469: 
+Train loss: 2.2812721082719705
+Test loss: 2.281470822075666
+Step   130 of   469: 
+Train loss: 2.279813542204388
+Test loss: 2.2800938941664617
+Step   135 of   469: 
+Train loss: 2.278559678691929
+Test loss: 2.278755337505017
+Step   140 of   469: 
+Train loss: 2.2771851026405723
+Test loss: 2.2774049730624184
+Step   145 of   469: 
+Train loss: 2.2758373123104287
+Test loss: 2.27607085947263
+Step   150 of   469: 
+Train loss: 2.2744067826513517
+Test loss: 2.274635122994245
+Step   155 of   469: 
+Train loss: 2.2732731487791416
+Test loss: 2.2735280970395624
+Step   160 of   469: 
+Train loss: 2.2720004926293584
+Test loss: 2.272222941204653
+Step   165 of   469: 
+Train loss: 2.2706597558522628
+Test loss: 2.2709154375528886
+Step   170 of   469: 
+Train loss: 2.2691988540908037
+Test loss: 2.269481378086543
+Step   175 of   469: 
+Train loss: 2.2676992921505943
+Test loss: 2.2679651652352284
+Step   180 of   469: 
+Train loss: 2.266328468161114
+Test loss: 2.266563878221027
+Step   185 of   469: 
+Train loss: 2.2650302143420205
+Test loss: 2.2653523259243724
+Step   190 of   469: 
+Train loss: 2.2639244956485296
+Test loss: 2.26411448898962
+Step   195 of   469: 
+Train loss: 2.2624231516304665
+Test loss: 2.2626688197507696
+Step   200 of   469: 
+Train loss: 2.26091944161108
+Test loss: 2.261167875791
+Step   205 of   469: 
+Train loss: 2.2593671810829035
+Test loss: 2.2596068948002186
+Step   210 of   469: 
+Train loss: 2.2577103154133944
+Test loss: 2.2579838744664595
+Step   215 of   469: 
+Train loss: 2.256099781747592
+Test loss: 2.256438142162258
+Step   220 of   469: 
+Train loss: 2.2546715615159374
+Test loss: 2.25492908590931
+Step   225 of   469: 
+Train loss: 2.2524853197194763
+Test loss: 2.2529329283762785
+Step   230 of   469: 
+Train loss: 2.2511534711061896
+Test loss: 2.251514822749768
+Step   235 of   469: 
+Train loss: 2.249378614506479
+Test loss: 2.2496854733612577
+Step   240 of   469: 
+Train loss: 2.2476421796669395
+Test loss: 2.2479893777330044
+Step   245 of   469: 
+Train loss: 2.2456171775268294
+Test loss: 2.2459436412584983
+Step   250 of   469: 
+Train loss: 2.24367604417316
+Test loss: 2.2440550327301025
+Step   255 of   469: 
+Train loss: 2.241596500752336
+Test loss: 2.2421015985941484
+Step   260 of   469: 
+Train loss: 2.239576121508065
+Test loss: 2.2398870819706027
+Step   265 of   469: 
+Train loss: 2.2373437881469727
+Test loss: 2.237594143819001
+Step   270 of   469: 
+Train loss: 2.2353461617130344
+Test loss: 2.2357260291859253
+Step   275 of   469: 
+Train loss: 2.2334859290365445
+Test loss: 2.2338335473658675
+Step   280 of   469: 
+Train loss: 2.231290724317906
+Test loss: 2.2316262418940918
+Step   285 of   469: 
+Train loss: 2.228906091997179
+Test loss: 2.229163190065804
+Step   290 of   469: 
+Train loss: 2.2267276594194314
+Test loss: 2.2269920050087624
+Step   295 of   469: 
+Train loss: 2.224477422439446
+Test loss: 2.2248920040615534
+Step   300 of   469: 
+Train loss: 2.2220454640307667
+Test loss: 2.22240914126574
+Step   305 of   469: 
+Train loss: 2.2197126049106406
+Test loss: 2.2201503010119423
+Step   310 of   469: 
+Train loss: 2.2168324155322576
+Test loss: 2.217293826200194
+Step   315 of   469: 
+Train loss: 2.2140969098624534
+Test loss: 2.2146344588974776
+Step   320 of   469: 
+Train loss: 2.2118934190879433
+Test loss: 2.2122027389073775
+Step   325 of   469: 
+Train loss: 2.209325279219676
+Test loss: 2.2096243733066623
+Step   330 of   469: 
+Train loss: 2.2062639826435153
+Test loss: 2.206745087090185
+Step   335 of   469: 
+Train loss: 2.203619108361713
+Test loss: 2.2039303092633262
+Step   340 of   469: 
+Train loss: 2.2007272142474936
+Test loss: 2.201141876689458
+Step   345 of   469: 
+Train loss: 2.197915517677695
+Test loss: 2.1983249248084373
+Step   350 of   469: 
+Train loss: 2.1949032423859935
+Test loss: 2.195281529830674
+Step   355 of   469: 
+Train loss: 2.1914172253366244
+Test loss: 2.191914606902559
+Step   360 of   469: 
+Train loss: 2.1887569568924983
+Test loss: 2.189172009290275
+Step   365 of   469: 
+Train loss: 2.18556829832368
+Test loss: 2.1860293695482156
+Step   370 of   469: 
+Train loss: 2.181979631973525
+Test loss: 2.182570255408853
+Step   375 of   469: 
+Train loss: 2.1788906667192105
+Test loss: 2.1794865757732067
+Step   380 of   469: 
+Train loss: 2.1754692590842812
+Test loss: 2.1758971820443365
+Step   385 of   469: 
+Train loss: 2.1717776080309332
+Test loss: 2.1723671060497476
+Step   390 of   469: 
+Train loss: 2.167933264021146
+Test loss: 2.168519450446307
+Step   395 of   469: 
+Train loss: 2.164017877336276
+Test loss: 2.1645497629197976
+Step   400 of   469: 
+Train loss: 2.1600679522853787
+Test loss: 2.16055550211567
+Step   405 of   469: 
+Train loss: 2.155442615686837
+Test loss: 2.156178048101522
+Step   410 of   469: 
+Train loss: 2.150409492395692
+Test loss: 2.151278542259992
+Step   415 of   469: 
+Train loss: 2.1470755217439037
+Test loss: 2.1470755217439037
+Step   420 of   469: 
+Train loss: 2.1427307613825395
+Test loss: 2.143235776383998
+Step   425 of   469: 
+Train loss: 2.1377546100293174
+Test loss: 2.138436996330649
+Step   430 of   469: 
+Train loss: 2.133193490868908
+Test loss: 2.1337194079059665
+Step   435 of   469: 
+Train loss: 2.128155409279516
+Test loss: 2.1287945064447693
+Step   440 of   469: 
+Train loss: 2.1232377129085993
+Test loss: 2.1239276740510586
+Step   445 of   469: 
+Train loss: 2.118397528842344
+Test loss: 2.119013687311593
+Step   450 of   469: 
+Train loss: 2.113790758585526
+Test loss: 2.114461335085206
+Step   455 of   469: 
+Train loss: 2.1087417905613526
+Test loss: 2.109373440176754
+Step   460 of   469: 
+Train loss: 2.1035856392423984
+Test loss: 2.10426476850348
+Step   465 of   469: 
+Train loss: 2.0979882882813277
+Test loss: 2.0987647024251648
+Epoch: 0
+Train loss: 2.094737004425566
+Test loss: 2.089696264266968
+====================================================================================================
+Trainer: BPTrainer (Adagrad_trainer)
+Settings: {'method': 'AdagradOptimizer', 'args': {'learning_rate': 0.01}}
+====================================================================================================
+Epoch: init
+Train loss: 2.3287912102068886
+Test loss: 2.328141474723816
+Step     0 of   469: 
+Train loss: 2.328255916045884
+Test loss: 2.3283319493471564
+Step     5 of   469: 
+Train loss: 2.3266726813073886
+Test loss: 2.3267209711721386
+Step    10 of   469: 
+Train loss: 2.3249758744643905
+Test loss: 2.3250478869777615
+Step    15 of   469: 
+Train loss: 2.323637493586136
+Test loss: 2.3237714403766696
+Step    20 of   469: 
+Train loss: 2.32241370112209
+Test loss: 2.3224913205130626
+Step    25 of   469: 
+Train loss: 2.320797811120243
+Test loss: 2.3208922087135964
+Step    30 of   469: 
+Train loss: 2.319374638088679
+Test loss: 2.3194546093374995
+Step    35 of   469: 
+Train loss: 2.3181185742556036
+Test loss: 2.3181966361352955
+Step    40 of   469: 
+Train loss: 2.3166200609530434
+Test loss: 2.3167465682757102
+Step    45 of   469: 
+Train loss: 2.3152667546676375
+Test loss: 2.315361705877013
+Step    50 of   469: 
+Train loss: 2.31402640019433
+Test loss: 2.3141675844030867
+Step    55 of   469: 
+Train loss: 2.3130829960612926
+Test loss: 2.3131754337731056
+Step    60 of   469: 
+Train loss: 2.3119134680699496
+Test loss: 2.3120003009246566
+Step    65 of   469: 
+Train loss: 2.310658337706226
+Test loss: 2.3107912095926575
+Step    70 of   469: 
+Train loss: 2.309151912139634
+Test loss: 2.309280771320149
+Step    75 of   469: 
+Train loss: 2.307906532691697
+Test loss: 2.308051731626866
+Step    80 of   469: 
+Train loss: 2.3065466011984874
+Test loss: 2.306733190003088
+Step    85 of   469: 
+Train loss: 2.305186049412873
+Test loss: 2.305316672486774
+Step    90 of   469: 
+Train loss: 2.3037594859882935
+Test loss: 2.3038626788026195
+Step    95 of   469: 
+Train loss: 2.3023545641010092
+Test loss: 2.302505753808102
+Step   100 of   469: 
+Train loss: 2.3008670180530872
+Test loss: 2.3010239237445895
+Step   105 of   469: 
+Train loss: 2.299488809149144
+Test loss: 2.299638784537881
+Step   110 of   469: 
+Train loss: 2.2978646189479504
+Test loss: 2.297992649724928
